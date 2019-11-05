@@ -1,0 +1,135 @@
+do while문 배워야 한다고 말하기
+
+control+alt+방향키 위or아래: 윗문장 그대로 복사
+alt+방향키 위or아래: 문장을 이동
+f2: 클래스 이름 변경
+
+control+/: 주석처리
+control+shift+\ : 주석처리 취소
+alt+shift+q: eclipse에서 창들이 없어진 경우 찾을 수 있음
+롤 c언어로 만듬
+window+d: 바탕화면 가기, 원래 화면 돌아오기
+------------------------------------
+while문
+
+	-while 문
+	while(조건식){
+			반복할 문장
+
+	}
+
+while문의 경우 무한반복한 후 특정 조건에서 탈출 시킬때 사용한다.
+
+예시
+
+int cnt=0;
+		while(true)
+		{
+			if(cnt==4)break;
+			System.out.println("이상묵");
+			cnt++;
+			
+		}
+
+
+	기타 제어문
+	break : 중괄호를 탈출한다.(while, switch)
+	continue; 컴파일러가 continue를 만나면 그 즉시 다음 반복으로 넘어간다.
+	
+	
+
+
+
+
+
+
+
+
+
+
+	-do~while 문
+
+
+예제
+package cgv;
+
+import java.awt.JobAttributes;
+
+import javax.swing.JOptionPane;
+
+public class CGV {
+
+	public static void main(String[] args) {
+	/*	 예매하기
+		1. 영화정보
+		2. 결제
+		3. 쿠폰
+		
+		1. 극한직업(8:00)
+		2. 어벤져스 엔드게임(9:00)
+		3. 걸캅스(15:00)
+		4. 악인전(23:00): 청소년 관람불가
+		*/
+		
+		String helloMsg = "어서오세요 CGV입니다.\n";
+		String mainMenu="① 예매하기\n② 구매하기\n③나가기";
+		String bookMenu="① 극한직업\n② 어벤져스\n③ 걸캅스(15:00)\n④ 악인전(23:00)\n⑤뒤로가기";
+		String errMsg="잘못 입력하셨습니다.";
+		int choice;
+		while(true) {
+		choice=Integer.parseInt(JOptionPane.showInputDialog(helloMsg+mainMenu));
+		if(choice==3) break;
+		
+		switch(choice)
+		{
+		case 1:
+			choice=Integer.parseInt(JOptionPane.showInputDialog("예매하실 영화를 선택하세요\n"+bookMenu)); //변수의 재사용
+			if(choice==1) {
+				JOptionPane.showMessageDialog(null, "극한직업(8:00) 예매 완료");
+				/*ABCDEFGHI
+				□□□■□□□□□□□□
+				□□□□□□□□□□□□
+				□□□□□□□□□□□□
+				□□□□□□□□□□□□
+				□□□□□□□□□□□□
+*/				
+			}
+			else if(choice==2)
+			{
+				JOptionPane.showMessageDialog(null, "어벤져스(9:00) 예매 완료");
+			
+			}
+			else if(choice==3)
+			{
+				JOptionPane.showMessageDialog(null, "걸캅스(15:00) 예매 완료");
+			}
+			else if(choice==4)
+			{
+				int age=Integer.parseInt(JOptionPane.showInputDialog("나이를 입력하세요"));
+				if(age>0&&age<20) JOptionPane.showMessageDialog(null, "예매 실패\n 청소년 관람 불가 영화입니다.");
+				else if(age >19) JOptionPane.showMessageDialog(null, "악인전(23:00) 예매 완료");
+				else JOptionPane.showMessageDialog(null, errMsg);
+			}
+			else if(choice==5)
+			{
+				JOptionPane.showMessageDialog(null, "메인화면으로 이동합니다.");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, errMsg);
+			}
+			}
+			break;
+		case 2:
+			System.out.println("구매하기");
+			break;
+		case 3:
+			System.out.println("나가기");
+			break;
+		default:
+			System.out.println(errMsg);		
+		}
+		
+		}
+		
+	}

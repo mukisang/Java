@@ -1,0 +1,9 @@
+페키지 안에 img 파일 만들고 이클립스에서  src 복사
+원하는 파일 만들어서 src 안에 main.png넣기
+
+ImageIcon img= new ImageIcon("src/img/main.png");
+
+JOptionPane.showOptionDialog(null, "안녕", title, JOptionPane.DEFAULT_OPTION
+					, JOptionPane.ERROR_MESSAGE, img, mainMenu, mainMenu[0]);
+
+null 부분에 img 넣기

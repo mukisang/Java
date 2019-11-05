@@ -1,0 +1,13 @@
+MouseMotionListener
+
+mouseMoved() : 지정된 영역에서 마우스에서 움직일 때
+mouseDragged() : 지정된 영역에서 마우스를 드래그 할 때
+
+addMouseMotionListener(new MouseMotionListener(){});
+MouseMotionListener를 JFrame에 걸어준다.
+-------------------------
+Key Listener
+
+keyTyped():키보드에서 타이핑 할 때
+keyReleased(): 키보드에서 손가락이 떨어질 때ㄴ
+keyPressed() : 키보드를 누르고 있을 때

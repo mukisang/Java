@@ -1,0 +1,132 @@
+헬로 메세지
+메뉴
+
+커피
+-아메리카노(3000)
+-에스프레소(3500)
+-카푸치노(3500)
+-카라멜 마끼야또(4000)
+
+
+스무디(6000)
+-딸리
+-바나나
+-키위
+
+음료
+-코코아(4000)
+-율무차(300)
+
+헬로메세지+메뉴판 보여주기-->메뉴 선택(ice, hot), 수량 확인->추가로 주문->카드, 현금 결재->현금은 10프로 할인
+->적립 10%
+->주문완료, 잔액, 적립금 보여주기
+
+cafe 만들기
+java홈피에 내꺼 올리기
+
+
+남은 상품갯수 입력하기
+
+--------------------------------------------------------
+-------------------------------------------------------------
+import javax.swing.JOptionPane;
+
+public class Muk_cafe {
+	
+	public static void main(String[] args) {
+		String HelloMsg="안녕하세요 묵카페입니다. 반갑습니다!\n"; //hello 메세지
+		String Menu="------------------------메뉴 판------------------------------\n"
+				+ "커피류\n"
+				+ "+++++++++++++\n"
+				+ "10. 아메리카노(3000)\n"
+				+ "11. 에스프레소(3500)\n"
+				+ "12. 카푸치노(3500)\n"
+				+ "13. 카라멜 마끼야또(4000)\n\n"
+				+ "+++++++++++++\n"
+				+ "스무디(6000)\n"
+				+ "+++++++++++++\n"
+				+ "20. 딸기\n"
+				+ "21. 바나나\n"
+				+ "22. 키위\n\n"
+				+ "+++++++++++++\n\n"
+				+ "음료\n"
+				+"+++++++++++++\n"
+				+ "30. 코코아(4000)\n"
+				+"31. 율무차(300)\n"
+				+"+++++++++++++\n";  //메뉴판
+		String AskMsg="원하시는 메뉴 왼쪽에 번호를 입력해주세요!";   //메뉴 선택창
+		String errMsg="주문 오류!\n";
+		int choice=1, pay_price=0;//내야할 돈;
+		int cnt=0; // ice hot과 수량
+		while(choice!=0)  //반복문으로 계속 진행 가능
+		{
+			pay_price=0;
+			choice=Integer.parseInt(JOptionPane.showInputDialog(null,HelloMsg+Menu+AskMsg));  
+			if(10<=choice&&choice<=13)
+			{
+				switch(choice)
+				{
+				case 10:
+					cnt=Integer.parseInt(JOptionPane.showInputDialog("아메리카노를 선택하셨습니다.\n"+"수량을 입력해 주세요!"));
+					if(cnt<=0)
+					{
+						JOptionPane.showMessageDialog(null, "주문 오류 1개 이상 입력해 주셔야 합니다.");
+						continue;
+					}
+					pay_price+=cnt*3000;
+					break;
+				case 11:
+					cnt=Integer.parseInt(JOptionPane.showInputDialog("에스프레소를 선택하셨습니다.\n"+"수량을 입력해 주세요!"));
+					if(cnt<=0)
+					{
+						JOptionPane.showMessageDialog(null, "주문 오류 1개 이상 입력해 주셔야 합니다.");
+						continue;
+					}
+					pay_price+=cnt*3000;
+					break;
+				case 12:
+					cnt=Integer.parseInt(JOptionPane.showInputDialog("카푸치노를 선택하셨습니다.\n"+"수량을 입력해 주세요!"));
+					if(cnt<=0)
+					{
+						JOptionPane.showMessageDialog(null, "주문 오류 1개 이상 입력해 주셔야 합니다.");
+						continue;
+					}
+					pay_price+=cnt*3000;
+					break;
+				case 13:
+					cnt=Integer.parseInt(JOptionPane.showInputDialog("카라멜 마끼야또를 선택하셨습니다.\n"+"수량을 입력해 주세요!"));
+					if(cnt<=0)
+					{
+						JOptionPane.showMessageDialog(null, "주문 오류 1개 이상 입력해 주셔야 합니다.");
+						continue;
+					}
+					pay_price+=cnt*3000;
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, errMsg);
+				}
+			}
+			else if(20<=choice&&choice<=22)
+			{
+			
+			}
+			else if(30<=choice&&choice<=31)
+			{
+			
+			}
+			else
+			{
+			
+			}
+			
+		}
+				
+				
+	}
+
+}
+
+
+
+
+

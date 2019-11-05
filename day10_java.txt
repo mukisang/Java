@@ -1,0 +1,174 @@
+ar[3]=*(ar+3)
+
+
+nextInt는 엔터도 문자로 받아서 버퍼에 남음
+nextLine, next는 엔터를 구분점으로 받아서 버퍼에 남지 않음
+배열선언시 배열의 이름의 경우 항상  heap영역의 주소값을 갖고 있으므로 항상 4byte이다
+
+어떻게 컴퓨터는 2차원 배열의 경우 heap 영역에서 행과 열을 구별하나
+-----------------------------------------------------------------
+2차원 배열 선언
+int[][] arr= new int[2][6];
+
+사진 분석
+새로 배열이 생성될 때 새로운 공간에 할당 jvm이 역할을 해줌
+
+Scanner sc 할때 never close하고 경고문이 생기는 것은 버퍼가 안 닫혀서 그럼
+
+arr[2][3]의 경우
+
+arr.length하면 2의 값이 나온다. 왜냐하면 arr의 경우 안에 2개의 배열이 존재하므로 2이다.
+
+3의 길이를 받고 싶을 때는 arr[0].length
+
+
+예시
+int [][] arrDong= new int[2][3];
+		int []sum= new int[2];
+		int total=0;
+		int length=arrDong.length*arrDong[0].length;
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i=0;i<arrDong.length;i++)//arrDong의 길이는 2가 나온다.
+		{
+			for(int j=0;j<arrDong[0].length;j++)
+			{
+				System.out.println((i+1)+"동"+(j+1)+"호의 월세를 입력하세요(단위 : 만원)");
+				arrDong[i][j]=sc.nextInt();
+				sum[i]+=arrDong[i][j];
+				total+=arrDong[i][j];
+			}
+		}
+
+
+
+
+2차원 배열의 예시
+//호별 월세 계산기
+		//동별 월세 계산기
+		//각 동마다 3개의 호가 존재한다.
+		//동은 2개가 있다.
+		//1동 1호, 1동 2호,...	
+				
+		/*int[][]arrDong= {
+				{30,20,50},
+				{50,10,70}
+		}; 한번에 선언*/
+		
+		int [][] arrDong= new int[2][3];
+		int []sum= new int[2];
+		int total=0;
+		int length=arrDong.length*arrDong[0].length;
+		double []avg= new double[2];
+		double average=0.0;
+		Scanner sc = new Scanner(System.in);
+		
+		
+		
+		for(int i=0;i<arrDong.length;i++)//arrDong의 길이는 2가 나온다.
+		{
+			for(int j=0;j<arrDong[0].length;j++)
+			{
+				System.out.println((i+1)+"동"+(j+1)+"호의 월세를 입력하세요(단위 : 만원)");
+				arrDong[i][j]=sc.nextInt();
+				sum[i]+=arrDong[i][j];
+				total+=arrDong[i][j];
+			}
+		}
+		for(int i=0;i<avg.length;i++)
+		{
+			avg[i]=Double.parseDouble(String.format("%.2f", (double)sum[i]/arrDong[0].length));
+		}
+		for (int i = 0; i < arrDong.length; i++) {
+			for (int j = 0; j < arrDong[0].length; j++) {
+				System.out.println((i+1)+"동"+(j+1)+"호의 월세: "+arrDong[i][j]+"만원. ");
+			}
+			System.out.println("총"+sum[i]+"만원  "+"평균"+avg[i]+"만원");
+		}
+		average=Double.parseDouble(String.format("%.2f", (double)total/length));
+		System.out.println("1단지 총 월세"+total+"만원. "+"1단지 평균 월세: "+average+" 만원");	
+
+
+
+
+
+
+2차원 배열 실제 heap영역 할당 배열 따로 정리하기
+
+http://blog.naver.com/PostView.nhn?blogId=r00t_ict10&logNo=220231424593&parentCategoryNo=&categoryNo=10&viewDate=&isShowPopularPosts=false&from=postView
+
+
+
+
+예시2
+	//매장별 월 평균 매출액과 총 매출액 구하기
+		//아디다스: 강남(성인, 키즈), 홍대(성인, 키즈), 신촌(성인, 키즈)
+		//지점별 평균, 성인별 평균, 키즈별 평균, 총 평균 매출액
+		String [][]shopName= {
+				{"강남점A", "강남점K"},
+				{"홍대점A", "홍대점K"},
+				{"신촌점A", "신촌점K"}
+		};
+		int [][]shopIncome= new int[3][2];
+		double []partSum=new double[3];
+		double []ageSum= new double[2];
+		int length=shopIncome.length*shopIncome[0].length;
+		int total=0, cnt=0;
+		Scanner sc= new Scanner(System.in);
+		
+		for(int i=0;i<shopIncome.length;i++)
+		{
+			for(int j=0;j<shopIncome[0].length;j++)
+			{
+				System.out.println(shopName[i][j]+"의 매출액을 입력하세요! (만원 단위)");
+				shopIncome[i][j]=sc.nextInt();
+				partSum[i]+=shopIncome[i][j];
+				ageSum[j]+=shopIncome[i][j];
+				total+=shopIncome[i][j];
+			}
+		}
+		
+		for (int i = 0; i<shopIncome.length;i++) {
+			for(int j=0;j<shopIncome[0].length;j++)
+			{
+				System.out.println(shopName[i][j]+"의 수익은 "+shopIncome[i][j]+"만원 입니다.");
+			}
+			System.out.println("해당 지점의 평균 매출은 "+String.format("%.2f", partSum[i]/shopIncome[0].length));
+			System.out.println();
+		}
+		
+
+		System.out.println("ADULT 의 평균은 "+String.format("%.2f", ageSum[0]/shopIncome.length));	
+		System.out.println("KIDS 의 평균은 "+String.format("%.2f", ageSum[1]/shopIncome.length));	
+		System.out.println("총 매출액은 "+total+"   총 평균 매출액은 "+String.format("%.2f", (double)total/length));
+		
+		
+		System.out.println("이번달 인센티브 매장명");
+		System.out.println();
+		for (int i = 0; i < shopIncome.length; i++) {
+			for (int j = 0; j < shopIncome[0].length; j++) {
+				if(shopIncome[i][j]>total/length)
+				{
+					System.out.println(shopName[i][j]);
+					cnt++;
+				}
+					
+			}
+		}
+		
+		if(cnt==0)
+			System.out.println("없음");
+		else
+			System.out.println("총 "+cnt+"매장");
+
+		
+		
+		
+		
+
+
+
+
+
+
+

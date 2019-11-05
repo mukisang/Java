@@ -1,0 +1,170 @@
+<> generic의 경우 내부에 int 같은 건 불가하고 wrapper class들만 가능하다.
+ex) Integer
+iterator는 순서를 부여해주는 역할이다.
+-----------------------------------
+
+
+배열 (정적)
+ArrayList (동적배열)
+자료를 증가할때 정적 배열보다 빠름
+
+set(집합)
+set은 검색의 목적이 있기 때문에 순서 정보를 관리할 필요가 없어서
+데이터 크기에 상관없이 검색에 걸리는 시간이 매우 짧다.
+반면 List는 index를 관리해야 하기 때문에 상대적으로 시간이 오래 걸린다.
+그러므로 기능적 차이가 없다. HashSet을 써야한다.
+iterator 순서를 부여해주는 역할
+검색에 있어서 속도가 빠르다.
+-------------------------------------------------------------
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.IntStream;
+
+public class LIstAndSet {
+	public static void main(String[] args) {
+		final int SIZE = 10_000_000;
+		final List<Integer> arrayList = new ArrayList<>(SIZE);
+		final Set<Integer> hashSet = new HashSet<>(SIZE);
+		final int data = 9_000_000;
+		
+		//순차 병렬 집계연선
+		IntStream.range(0, SIZE).forEach(value->{
+			arrayList.add(value);
+			hashSet.add(value);
+			
+			Instant start = Instant.now();
+			arrayList.contains(data);
+			Instant end = Instant.now();
+			long time = Duration.between(start, end).toMillis();
+			System.out.println("arrayList 검색 시간: "+(time/10000.0)+"초");
+			
+			start = Instant.now();
+			hashSet.contains(data);
+			end = Instant.now();
+			time = Duration.between(start, end).toMillis();
+			System.out.println("hashSet 검색 시간: "+(time/10000.0)+"초");
+		});
+		
+	}
+}
+-------------------------------------------------------
+HashMap
+map의 한 종류
+
+Key Value 한쌍(pair, entry)으로 저장된다.
+그러므로 검색에 용의하다.
+[key, value] 한 쌍
+
+Key는 중복이 불가능하다.(Set)
+Value는 중복이 가능하다.(Collection)
+
+
+
+
+
+Map 자료구조는 순서를 따지지 않기 때문에
+Set으로 묶은 후 Iterator를 통해 순서를 부여받아서 나와야 한다.
+
+key ---->l HashTable l  ↔	value
+(set타입)  		(Collection타입)
+key가 HashTable을 통해 value값을 가져온다.
+
+HashMap<K, V> 객체명 = new HashMap<K, V>();
+HashMap<K, V> 객체명 = new HashMap<>(용량);
+
+clear(): 모든 값(데이터, 객체) 제거
+containsKey(Object) : 키가 있는지 검사
+containsValue(Object value) : 값이 있는지 검사
+get(Object Key) : 키 값을 주고 그 짝꿍인 값을 가져온다.
+isEmpty() : 비어 있는지 확인
+keySet() : HashMap에 저장된 모든 키가 저장된 형태.(Set타입)
+values() : HashMap에 저장된 모든 값이 저장된 형태(Collection 타입)
+
+
+HashMap<String, Integer> fruitMap = new HashMap<String, Integer>();
+이라는 Map의 내용을 확인 할때는 다음과 같이 Set과 entry를 사용하여 구한다.
+Set<Entry<String, Integer>> set= fruitMap.entrySet();
+iterator<Entry<String, Integer>>iter = set.iterator();
+while(iter.hasNext())
+{
+	Map.Entry<String, Integer> e = iter.next();
+	System.out.println("과일 이름: "+e.getKey()+", 가격: "+e.getValue());
+	
+}
+-------------------------------------------------
+소프트웨어 디자인 패턴
+MVC모델(Model-View-Controller)☆
+
+Model
+id pw name age ~~~
+VO(Value Object), DTO(Data Transfer Object) : 사용할 변수들 선언
+private으로 선언하고 getter setter를 사용한다.
+다른 곳에서 직접 접근 하게 되면 설계오류 / 보안성 떨어짐
+ex) UserVO
+
+View
+로그인창, 회원가입 창
+main을 여기에 구현해야 한다.
+frame창을 여기에 만듬
+보여지는 view단 구성(선언이 아닌 실행)
+
+Controller
+DAO(DATA Access Object) : 기능들 선언
+로그인 join logout 기능들을 구현해야 한다.
+db의 갯수와 model의 갯수는 같아야 한다.
+ex) UserDAO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

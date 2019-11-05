@@ -1,0 +1,136 @@
+
+-문자열을 문자로 바꾸는 거 물어보기
+   sc.nextline()사용시 만약 한 문자만 입력했으면
+   charAt으로 하는거 밖에 없나?
+charAt을 이용해서 문자열 index를 charAt으로 변환한다.
+-python에서 자료형 int넘어가면 long으로 변환된다.
+이해 완료 근데 수업시간에는 int float str형밖에
+없다고 배웠는데 그럼 long타입도 존재하는 건가??
+존재 o
+
+C언어에서 포인터를 초기화 할때는 0과 NULL로 초기화한다.
+둘의 경우 0의 주소값으로 초기화한 값이 같다.
+window+d(desktop): 바탕화면 가기, 원래 화면
+---------------------------------------
+
+배열
+
+예시
+int []cj=new int[3];
+int sum=0;
+double average=0.0;
+String []cjName= {"올리브영", "CGV", "투썸플레이스"};
+		
+Scanner sc =new Scanner(System.in);
+		
+//1번째 방법 대화상자
+/*for(int i=0;i<cjName.length;i++)
+{
+	cj[i]=Integer.parseInt(JOptionPane.showInputDialog(cjName[i]+"의 월 매출액을 입력받기"));
+}
+		
+for (int i = 0; i < cjName.length; i++) {
+	sum+=cj[i];
+}
+JOptionPane.showMessageDialog(null, "합계는 "+sum);
+average=sum/(double)cj.length;
+JOptionPane.showMessageDialog(null, "평균은 "+average);*/
+
+String.format("서식문자", 바꿀 내용);
+문자열 타입으로 생김
+예시: average=Double.parseDouble(String.format("%.2f", sum/(double)cj.length));
+
+
+
+구구단 출력 for문 1번 이용
+
+for문 안에 변수 2개 선언
+변수 1개 선언
+
+예시
+for (int i = 0, j=1; i < 10&&j<10; j++)
+		{
+			
+			System.out.printf("%d * %d=%d\n",i+1,j,(i+1)*j);
+			if(j==9)
+				{
+					j=0;
+					i++;
+				}
+		}
+			
+	}
+	int i=1;
+	for(int j=1;j<90;j++)
+	{
+		if(j%10==0)
+		{
+			i++;
+			j++;
+			System.out.println();
+		}
+		System.out.printf("%d*%d=%d",i,j%10,i*(j%10));
+	}
+
+	for(int i=1;i<90;i++)
+	{
+		System.out.println("%d*%d=%d\n",i/10+1,i%10,(i/10+1)*(i%10));
+	}
+
+2차원 배열
+배열안에 배열이 존재하는 것
+
+1차월은 열 2차원은 행 3차원은 면 4차원은 의 라고 부름
+주로 arrData로 (r2번 사용)
+
+
+그림 arrData+1의 위치 설명
+
+3	7	9	1||	3	5
+arrdata
+	arrdata+0+1
+				arrdata+1
+					arrdata+1+2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

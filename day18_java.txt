@@ -1,0 +1,68 @@
+
+객체를 클릭해서 control+t 상속 관계도를 알 수 있음
+
+toString() 클래스 이름을 print했을때 주소가 아닌 다른 값을 반환하고 싶을 때 이용
+public String toString() {
+		// TODO Auto-generated method stub
+		return this.brand+this.color+this.getPrice();
+		
+	}
+Thread.sleep(500)/ 속도를 조절할 수 있는 메서드 1000이 1초 try문과 같이 사용
+try {
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+----------------------------------
+
+
+
+
+
+상속(inheritance)
+클래스들의 공통 요소를 잘 확인해야 한다.
+
+사람>> 컴퓨터(X)
+
+햄버거 클래스>>피자 클래스(o)
+
+핸드폰>>>삼성, LG, 애플
+
+class A{
+	A필드
+}
+class B extends A{
+	A, B필드
+}
+
+부모클래스 : A
+	상위,슈퍼,기반 클래스로도 부른다.
+자식클래스: B
+	하위, 서브, 파생 클래스로도 부른다.
+
+부모 클래스로부터 상속받은 멤버 변수의 접근 권한이 private일 경우
+1. 부모 클래스의 생성자를 호출해서 초기화 시켜야 한다.
+2. 부모 클래스에 setter 메소드를 정의했다면 상속받은 setter메소드를 호출해서 초기화 시킬 수도 있다.
+3. 변수에 저장된 값은 getter 메소드를 사용해서 값을 얻어 와야 한다.
+
+부모 클래스로부터 상속받은 멤버 변수의 접근 권한이 protected일 경우
+1. 자식 클래스에서 접근이 가능하기 때문에 this를 사용해서 초기화 시킬 수 있다.
+2. 자식 클래스에서 접근이 가능하므로 getter메소드를 사용하지 않고 변수 이름만 적어주면 된다.
+
+---------------------------------------------------------
+
+overriding재정의
+overloading 같은 이름의 메서드를 다른 파라미터를 이용해서 사용하는 것
+overriding부모의 클래스에 필요한 메서드를 하위 클래스에서 다시 정의해서 쓰는 것
+
+class Money extends Human{
+	
+
+}
+
+class 자식클래스 extends 부모클래스{
+
+}
+
+super();//자식 생성자 안에 있는 부모 생성자
+부모의 필드에 있는 요소를 자식 클래스에서 사용할때는 부모클래스가 자동 생성된다.

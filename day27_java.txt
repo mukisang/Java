@@ -1,0 +1,244 @@
+//TODO 나중에 작성해야할 것들을 표시하는 역할 (오른 쪽에 파란 주석이 뜸)
+size(): ArrayList 의 크기(데이터 개수) 리턴
+빠른 for문 사용시 iterating이라고 부름
+control+shift+5 : import 단축키
+
+--------------------------------------------
+데이터들을 담아 두는 데이터 타입
+
+/* ArrayList<E>
+	 ※계층도 숙지 중요
+	
+ Collection<E>
+  |__ List<E>
+       |__ ArrayList<E>, LinkedList<E>
+	
+ List 특징(ArrayList와 LinkedList의 공통점)
+ 1. 중복 저장 허용(같은 내용을 저장해도 다르게 안식)
+ 2. 저장 순서 유지 (인덱스 존재)
+
+
+
+
+
+ ArrayList:
+ 1. 저장 용량을 늘리는 데 많은 시간 소요 - 단점
+ 2. 데이터를 삭제하는 데 많은 연산 - 단점
+ 3. 데이터 참조 매우 빠름 - 장점
+
+추가 메서드
+리스트명.add("값");
+list1.add(100);
+
+제거 메서드
+리스트명.remove(인덱스)
+list1.remove(2);
+
+수정 메서드
+리스트명.set(인덱스, 바꿀 값)
+list1.set(2, 333);
+
+출력방법
+ArrayList 출력방법 
+1)for 
+2)Enhanced-for 사용 
+3)Iterator(반복자) 사용 
+4)forEach() 사용
+
+
+ex)
+//ArrayList 선언
+ArrayList<Integer> list1=new ArrayList<Integer>();
+		
+//데이터 생성(추가) : add() 사용
+list1.add(100);
+list1.add(400);
+list1.add(500);
+list1.add(200);
+list1.add(400);
+	
+//데이터 읽기(검석) :get(index) 사용
+//size(): ArrayList 의 크기(데이터 개수) 리턴
+for(int i : list1)
+{
+	System.out.println(i);
+}
+//데이터 삭제 : remove(index) 사용
+System.out.println();
+list1.remove(2);	//500이 지워진다.
+System.out.println(list1.get(2));
+		
+//데이터 수정 : set(index, element)
+System.out.println();
+list1.set(2, 333);
+		
+for(int i : list1)
+{
+	System.out.println(i);
+}
+//데이터 중간 삽입: add(index, 값) 사용
+list1.add(2, 200);
+----------------------------------------------
+System.out.println("Iterator를 사용한 출력");
+		Iterator<Integer> itr = list1.iterator();
+		//Iterator(반복자)
+		//hasNext() : iterator 가 다음 데이터 원소를 가지고 있나요? 리턴 타입(true/false)
+		//next() : 현재 iterator 위치의 원소 값 리턴
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		//itr.next 원소를 출력하고 다음으로 넘어감
+		
+		//forEach()+functional interface
+		//java8부터 사용
+		System.out.println("forEach() 를 사용한 출력");
+		list1.forEach(System.out::println);
+-----------------------------------------------------
+
+
+ LinkedList:
+ 1. 저장 용량을 늘리는 과정이 매우 간단 - 장점
+ 2. 데이터를 삭제하는 과정이 간단 - 장점
+ 3. 데이터 참조가 불편 - 단점
+	 
+메소드가 arrList와 같음
+
+ ※ Vector<E> <-- ArrayList 와 비슷하나... ArrayList 추천.
+-----------------------------------------------
+package practice.list;
+
+public class Score {
+	private int korean;
+	private int english;
+	private int math;
+	
+	
+
+	public Score() {
+		super();
+	}
+
+
+	public Score(int korean, int english, int math) {
+		super();
+		this.korean = korean;
+		this.english = english;
+		this.math = math;
+	}
+	
+
+	public int getKorean() {
+		return korean;
+	}
+	public void setKorean(int korean) {
+		this.korean = korean;
+	}
+
+
+
+	public int getEnglish() {
+		return english;
+	}
+
+
+	public void setEnglish(int english) {
+		this.english = english;
+	}
+
+	public int getMath() {
+		return math;
+	}
+
+
+	public void setMath(int math) {
+		this.math = math;
+	}
+
+}
+
+package practice.list;
+
+public class Student {
+	private int id;
+	private String name;
+	private Score score;
+	
+	
+	
+	public Student() {
+		super();
+	}
+
+	public Student(int id, String name, Score score) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.score = score;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Score getScore() {
+		return score;
+	}
+	public void setScore(Score score) {
+		this.score = score;
+	}
+	
+	@Override
+	public String toString() {//toString 오버라이딩
+		String result="";
+		
+		result+="id: "+id+"\t이름: "+ name;
+		
+		if(score!=null)
+		{
+			result+="국어: "+score.getKorean()
+				+"영어: "+score.getEnglish()
+				+"수학: "+score.getMath();
+		}
+		
+		
+		return result;
+	}
+	
+	
+}
+
+
+package practice.list;
+
+import java.util.LinkedList;
+
+public class ListMain {
+	public static void main(String[] args) {
+		Student stu = new Student(77,"홍길동",new Score(55,80,90));
+		
+		System.out.println(stu);
+		LinkedList<Student> stuList = new LinkedList<Student>();
+		
+		
+		stuList.add(new Student(77,"김대철",new Score(5,0,9)));
+		stuList.add(new Student(80,"아이언맨",new Score(3,0,7)));
+		stuList.add(new Student(64,"호크아이",new Score(2,0,8)));
+		
+		for(Student i : stuList)
+		{
+			System.out.println(i);
+		}
+	}
+}
+
+
+

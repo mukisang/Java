@@ -1,0 +1,78 @@
+alt+shift+z: cry catch문 설정
+toUpperCase()입력한 값을 대문자로 변환
+------------------------------------------
+예외처리(Exception)
+
+에러: 심각한 오류
+예외: 덜 심각한 오류
+
+(1)
+try{
+	오류가 날 수도 있는 문장
+}catch(예외이름 객체명){
+	오류 발생시 실행할 문장
+}
+
+(2)
+try{
+	오류가 날 수도 있는 문장
+}catch(예외이름1 객체명1){
+	오류 발생시 실행할 문장
+}catch(예외이름2 객체명2){
+	오류 발생시 실행할 문장
+}
+
+(3)
+try{
+	시도할 문장
+}catch(예외이름 객체명){
+	오류 발생시 실행할 문장
+}finally{
+	예외발생 여부와 상관없이 무조건 실행할 문장
+}
+
+(4)
+try{
+	오류가 날 수도 있는 문장
+}catch(예외이름1| 예외이름 2 객체명){
+	둘 중 하나라도 발생시 실행할 문장
+}
+
+객체명.getMessage() 오류이름
+객체명.printStackTrace() 오류내용 출력
+--------------------------
+public class Try {
+	public static void main(String[] args) {
+		try {
+			System.out.println(10 / 0);
+		} catch (ArithmeticException e) {
+			System.out.println(e.getMessage());
+			System.out.println("0으로 나눌 수 없습니다.");
+			
+			e.printStackTrace();
+		}
+		System.out.println("종료");
+	}
+}
+------------------------------
+public class Try2 {
+	public static void main(String[] args) {
+		int[] arData=new int [5];
+		int cnt=0;
+		for (int i = 0; i < 100; i++) {
+			try {
+				arData[i] = i + 1;
+				cnt++;
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				break;
+			}
+		}
+		System.out.println(cnt);
+		for (int i = 0; i < arData.length; i++) {
+			System.out.println(arData[i]);
+		}
+		System.out.println("정상 종료");
+	}
+}

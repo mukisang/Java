@@ -1,0 +1,119 @@
+System.out.printin()의 경우 syso입력하고 control+space
+control+f11: 컨파일
+tap:들여쓰기
+control+space: 자동완성
+control+alt+방향키 위or아래: 윗문장 그대로 복사
+alt+방향키 위or아래: 문장을 이동
+control+shift +/: 주석처리
+f2: 클래스 이름 변경
+1byte=8bit 라고 ANCI표준협회에서 규정함
+
+eclipse의 경우 한글을 사용하면 RAM에 영어 보다 더 많은 영역을 할당하므로
+입력메소드의 경우 커서 위치를 변경해 줘야 한다.
+입력메소드--> 버퍼--> RAM
+
+연결
+문자열이 섞여 있으면 무조건 연결 숫자끼리만 연산
+
+-------------------------------------------
+
+
+JOptionPane (대화상자(사용자를 위한 페이지)) pane은 패널의 약자
+대화상자라는 것이다. 개발자보다 사용자를 위한 페이지이다. 이 JOptionPane은 다음과 같이 사용한다.
+
+
+String name=null;//문자열 변수 선언 후 초기화
+		
+JOptionPane.showMessageDialog(null, "안녕");
+name=JOptionPane.showInputDialog("이름을 입력하세요");
+JOptionPane.showMessageDialog(null, name);
+
+이를 하나씩 설명해보자. 
+
+import javax.swing.JOptionPane; 이 부분이 생성됨.
+
+JOptionPane.showMessageDialog(Component, Message )는 출력 메소드이다.  파라미터로 component와 출력할 메세지를 갖는다.
+
+
+
+JOptionPane.showInputDialog(Message);는 입력 메소드이다. 파라미터로 받을 때 보여줄 메세지를 갖는다.
+그리고 이 메소드의 경우 입력 받은 값을 문자열 타입으로 저장한다.
+
+
+null: 아무것도 저장되지 않는 것.
+
+
+
+//예제로 계산기 만들어 보기
+ >>두 정수를 입력받아 덧셈, 뺄셈, 곱셈, 나눗셈
+--------------------------------------------------
+비트 연산
+ ( 10진수를 2진수로 변환 후 비트로 계산하는 방식이다.)
+python에서 배웠으므로 그대로 발췌한다!
+이항연산자
+& (and):둘 다 1이어야만 1 아니면0
+||(or): 둘 중 하나만 1이어도 1 둘다 0 이어야만 0
+^(xor):둘의 값이 달라야만 1
+a<<n: 비트를 좌측으로 n씩 이동 ex)10<<2 10을 좌측으로 2칸이동= 4로 나눈 값
+a>>n:비트를 우측으로 n칸씩 이동  ex)10>>2 10을 우측으로 2칸이동= 4를 곱한 값
+
+단항연산자
+~(not):1을 0으로 0을1로 바꾼다. ~a->-a-1   ~11=-12( 2의 보수법으로 설명해두기.)
+
+
+-----------------------------------------------------------
+
+-조건 연산자(비교 연산자)
+
+	조건식: a = 0(x), a>0(o): 결과가 참, 거짓, 둘 중 하나가 나오는 식	
+
+	==	:같다.
+	!=	:같지 않다.
+	<,>	:미만, 초과
+	>=,<=	:이상, 이하
+	
+
+	논리연산자
+	A&&B : A조건식과 B조건식 모두 참이어야 참
+	A||B : 둘중 하나라도 참이면 참
+
+참 거짓 용 자료형 boolean true, false를 담는다.
+0은 거짓
+0외의 모든 값은 참
+데이터의 최소단위가 1byte이므로 boolean은 최소단위인 1byte로 되어있다.
+
+삼항 연산자
+조건식 ? true : false
+조건식이 참이면 true 부분에 있는 값이 되고 false이면 false부분에 있는 값이 된다.
+삼항 연산자는 true 또는 false부분의 값을 받으므로 삼항연산자의 결과값을 받을
+저장공간에 저장해야한다.
+
+ex)temp= num1>num2 ? num1: num2;
+
+//예제 퀴즈프로그램
+//퀴즈 프로그램 만들기
+	//Q. 다음중 프로그래밍 언어가 아닌 것은?
+	//1.Java
+	//2.Python
+	//3.C언어
+	//4.망둥어
+cnt(count, 문항수)도 포함
+---------------------------------
+Answer
+int choice=0, answer=4, cnt=4;
+	String Q_msg="Q. 다음중 프로그래밍 언어가 아닌 것은?\n1.Java\n2.Python\n3.C언어\n4.망둥어";
+	String A_msg="정답입니다.", W_msg="오답입니다.", F_msg="잘못 입력하셨습니다.", temp="";
+	
+	
+	choice=Integer.parseInt(JOptionPane.showInputDialog(Q_msg));
+	temp=choice== answer ? A_msg:choice>0&&choice<cnt+1 ?W_msg:F_msg;
+	
+	
+	
+	JOptionPane.showMessageDialog(null, temp);
+
+
+
+
+
+

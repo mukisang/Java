@@ -1,0 +1,123 @@
+try catch 시도하고 오류를 캐치
+throught 오류를 다시 보내는 것
+String data1=new String("ABC");
+data1은 참조변수
+----------------------------------
+API(Application Programming Interface)
+응용 프로그램 프로그래밍 인터페이스
+
+자바 시스템을 제어하기 위해서 자바에서 제공하는 명령어들을 의미한다.
+선배 개발자들이 JAVA에서 코딩을 쉽게 할 수 있도록 만들어 놓은 것.
+
+java.lang
+	자바 프로그래밍을 위한 가장 기본적인 패키지와 클래스를 포함하고 있다.
+java.util
+	프로그램을 제어하기 위한 클래스와 데이터를 효율적으로 저장하기 위한 클래스들을 담고 있다.
+java.io
+	키보드, 모니터,프린터,파일 등을 제어할 수 있는 클래스들의 모음
+java.net
+	통신을 위한 기능들을 담고 있다.
+
+
+http://docs.oracle.com/javase->api documentation->java.base
+
+API의 종류는 굉장히 많고 다양하기 때문에 모두 외우는 것은 불가능하다.
+그렇기 때문에 처음보는 API라도 설명을 잘 읽고 맞는 목적으로 사용하는 방법을 알아야 한다.
+
+javadoc(클래스, 메서드에 대한 도움말)
+
+JAVA API문서는 javadoc로 만들어진 문서라고 볼 수 있다.
+
+/**    어노테이션 파란색 주석: 메서드 설명글
+
+@author 개발자 이름
+@exception 메서드에서의 예외 확인
+@param 메서드의 매개변수
+@return 메서드의 반환 값
+@see 다른 주제에 관한 링크 지정(관련있는 주제)
+@serial 직렬화 필드
+@throws 메서드에서의 예외
+@version 클래스의 버전
+
+void 형 반환인 경우에는 @return을 따로 작성하지 않는다.
+
+ex)
+ * @author  James Gosling
+ * @author  Arthur van Hoff
+ * @author  Alan Liu
+ * @see     java.text.DateFormat
+ * @see     java.util.Calendar
+ * @see     java.util.TimeZone
+ * @since   JDK1.0
+
+하지만 주석을 작성해도 자동으로 javadoc 문서가 만들어지지 않는다.
+
+javadoc형식으로 export 한다
+bin javadoc.exe형식으로 export
+workspace 폴더 doc 폴더->index.html로 확인
+
+------------------------------------------
+Object 클래스
+
+1. equals()
+	두 주소값이 같은지를 확인하는 메서드
+	String 클래스에서 overriding(재 정의한 것임)
+	단, String 클래스에서 equals를 재정의 하였기 때문에
+	String타입이라면 값을 비교한다.
+
+ex)
+String data1=new String("ABC");
+String data2=new String("ABC");
+String data3="ABC";
+String data4="ABC";
+/* data3, data4의 값 ABC는 기계에서 같은 주소로 할당함 */
+Random r=new Random();
+Random r2=new Random();
+System.out.println(data1.intern()==data2);
+System.out.println(data1.equals(data2));
+System.out.println(data3==data4);
+System.out.println(data3.equals(data4));
+System.out.println(data3.intern()==data4.intern());
+	
+System.out.println(r.equals(r2));
+System.out.println(r==r2);
+
+문자열.inturn() 해당 문자열을 가지는 주소값을 리턴함
+==주소값을 비교하는 기호
+.equals() 주소값을 비교해 안에 같은 값을 가지는지 비교
+
+다음의 코드를 봐보도록 하자
+data3, data4의 경우는 같은 값인 "ABC"를 가지므로 실제 메모리 상에서는 한 공간에 "ABC"값을
+가지고 같은 주소를 가리키도록 한다.
+
+
+
+
+2. hashCode()
+	두 객체가 같은지 확인하는 메서드(Collection에서 다시 다룸)
+	데이터 관리 기법 중 하나이며 다량의 데이터를 저장하는 것이
+	가능하고 빠른 검색이 가능하다.
+	String 클래스에서 오버라이딩 했으며, 값이 같으면 같은 해쉬코드를 갖는다.
+
+
+
+어떻게 해쉬코드는 객체 안까지 들어가 다른 상수 값이랑 비교해서 같은 값을 반환시키는가??
+
+hashCode 공부계속
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

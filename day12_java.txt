@@ -1,0 +1,115 @@
+FTest t= new FTest(); 맨 오른쪽에 괄호 생성자라 함수표시
+프롬프트에서 사용하는 javac는 java컴파일러라는 의미
+
+Scanner sc= new Scanner(system.in)
+sc.next()대신
+new scanner(system.in).next(); 해도 됨
+//new Scanner(system.in).next().charAt(0)))으로 해도 됨.
+여러번 사용안 할 것이므로 sc라는 변수만들기 과정을 생략한 거임
+
+함수의 자료형에 반환값을 존재하게 하는 경우
+반드시 어떤 경우라도 반환형이 존재하게 해야 한다.
+함수의 조건문을 사용해서 반환하는 경우 모든 경우에 반환값이 있어야 한다.
+예시
+int count(int st, int end)
+	{
+		int result=0;
+		if(st>=end)
+		{
+			System.out.println("제발 좀 그만하세요");
+			
+		}
+		else
+		{
+			for(int i=st;i<end+1;i++)
+				result+=i;
+			//return result;여기 있으면 오류 발생
+		}
+		return result;//여기 있어야 오류 안 발생
+	}
+	
+
+
+JOptionPane.showOptionDialog(parentComponent, message, title, optionType, messageType, icon, options, initialValue)
+int형으로 반환됨
+x를 누르면 -1이 반환됨
+final 값을 고정하게 만들어 상수를 만듬
+값 변경 불가능
+ex) 
+final String title="CGV";
+title="안녕";//오류 표시가 남
+
+alt shift+z for 문??
+----------------------------------------------
+final static String title="CGV";
+	int money=1000000;
+	int tPrice=12000;
+	void buyTicket(String[] arFilm, int choice) {
+		
+			for (int i = 0; i < arFilm.length; i++) {		
+				if(choice==i)
+				{
+					money-=tPrice;
+					JOptionPane.showMessageDialog(null, arFilm[i]+ "예매 완료", title, JOptionPane.PLAIN_MESSAGE);
+					break;
+				}
+					
+			} 
+			
+	}
+	void buyFood()
+	{
+		
+	}
+	void checkCoupon()
+	{
+		
+	}
+	void checkAge()
+	{}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		String[] mainMenu= {"예매하기", "구매하기", "쿠폰입력"};
+		String[] arFilm= {"어벤져스(09:00)","극한직업(13:00)", "악인전(23:00)"};
+		String[] arFood= {"팝콘(7000원)","콜라(2500원)", "맥주(3500)"};
+		String myCoupon="";
+		int choice=0;
+		
+		
+	
+		
+		
+		while(true)
+		{
+			choice=JOptionPane.showOptionDialog(null, "안녕", title, JOptionPane.DEFAULT_OPTION
+					, JOptionPane.ERROR_MESSAGE, null, mainMenu, mainMenu[0]);
+			System.out.println(choice);
+			if(choice==-1) break;
+			switch(choice)
+			{
+			case 0:
+				//예매 영역
+				System.out.println("예매하기");
+				choice=JOptionPane.showOptionDialog(null, "영화를 선택하세요", title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, arFilm, null);
+				//예매완료 미구현
+				break;
+			case 1:
+				//구매영역
+				System.out.println("구매하기");
+				choice=JOptionPane.showOptionDialog(null, "상품를 선택하세요", title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, arFood, null);
+				//구매하기 미구현
+				break;
+			case 2:
+				//쿠폰 영역
+				System.out.println("쿠폰입력");
+				myCoupon=JOptionPane.showInputDialog("쿠폰 입력(티켓 40%할인)");
+				break;	
+				//쿠폰 등록 후 비교 미구현
+			}
+		}
+		
+	}

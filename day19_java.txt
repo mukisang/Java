@@ -1,0 +1,5 @@
+Random r = new Random(); 랜덤
+alt+shift+Z 하면 영역이 잡힌다.(반복문or try catch사용가능)
+자동줄맞춤 control shift f
+control+a 전체 선택
+alt+ shift+r 전체 바꾸기

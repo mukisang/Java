@@ -1,0 +1,54 @@
+pixel gif- u.i 이미지 따오기
+클래스 배열
+	객체를 여러개 선언해야 하는 경우 배열타입으로 한번에 선언 후 사용한다.
+클래스 배열 선언
+1. 클래스명[] 배열명 = new 클래스명[길이];
+2. 클래스명 [] 벼열명={
+	new 클래스명()
+	new 클래스명()
+	new 클래스명()
+	new 클래스명()
+};
+
+클래스 배열 사용
+배열명[idx].필드명
+배열명[idx].메서드명()
+
+전역변수는  new를 만나면 초기화 but static은 초기화가 되지 않음
+static new와 상관없이 값을 초기화 안하고 사용하고 싶을때 이용
+static은 data영역에 생긴다.
+클래스 이름은 stack영역에 static 변수는 데이타 영역 new는 heap영역
+
+ alt shift r+ getter, setter 나오게 함
+메서드로 private 변수에 접근하기 위해 사용하는 메서드들 getter, setter
+
+-------------------------------------------------
+스테틱 예시
+V2
+public class V2 {
+	public static void main(String[] args) {
+		V1 v= new V1();
+		v.f();
+		v.f();
+		v.f();
+		v= new V1();
+		v.f();
+		
+		v.f();
+		v.f();
+		v.f();
+		v.f();
+		v.f();
+		v.f();
+	}
+}
+
+V1
+package day17;
+
+public class V1 {
+	static int data=0;
+	void f() {
+		System.out.println(++data);
+	}
+}
